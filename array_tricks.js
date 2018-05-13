@@ -29,6 +29,7 @@ removeDuplicateItems([42, 'foo', 42, 'foo', true, true]); //=> [42, "foo", true]
 
 /**
 * 3. Flattening multidimensional arrays
+*
 * Flattening arrays is trivial with Spread operator:
 */
 

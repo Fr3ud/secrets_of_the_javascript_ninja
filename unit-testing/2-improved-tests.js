@@ -25,7 +25,7 @@ const ipToInt = (ip) => {
 const tests = [
     ['127.0.0.1', 2130706433, 'Localhost IP address'],
     ['10.0.0.1', 167772161, 'Single class A network'],
-    ['192.168.0.1', -1062731510, 'Negative number'],
+    ['192.168.1.10', -1062731510, 'Negative number'],
     ['0.0.0.0', 0, 'Four zeros'],
     ['8.8.8.8', 0x08080808, 'Four eights'],
 
@@ -35,6 +35,7 @@ const tests = [
     ['8.8.8.8', 42, 'Four eights'],
 ];
 
+const results = [];
 for (const test of tests) {
     const [ip, expected, name] = test;
     const result = ipToInt(ip);
@@ -42,6 +43,10 @@ for (const test of tests) {
     try {
         assert.strictEqual(result, expected, `Error in test "${name}"`);
     } catch (err) {
-        console.log(err);
+        const { message, operator } = err;
+
+        results.push({ message, ip, expected, result, operator });
     }
 }
+
+console.table(results);
